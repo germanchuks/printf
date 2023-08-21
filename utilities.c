@@ -70,7 +70,7 @@ long int size_conv_unsgned(unsigned long int num, int size)
  * @output_buffer: Array of characters.
  * @index: Index to start append.
  * @ascii_code: ASCII CODE.
- * Return: 1 Always.
+ * Return: 3 Always.
  */
 
 int append_hex_code(char ascii_code, char output_buffer[], int index)
@@ -86,5 +86,5 @@ int append_hex_code(char ascii_code, char output_buffer[], int index)
 	output_buffer[index++] = map_to[ascii_code / 16];
 	output_buffer[index] = map_to[ascii_code % 16];
 
-	return (1);
+	return (3);
 }
