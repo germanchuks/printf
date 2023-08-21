@@ -1,0 +1,70 @@
+.TH _PRINTF 22 "August 2023"
+.SH NAME 
+_printf \- A simple replica of C printf function
+
+.SH SYNOPSIS
+\fB#include <main.h>\fP
+.sp
+int _printf(const char *format, ...);
+
+.SH DESCRIPTION
+_printf function is a simple replica of the printf function in C.
+
+.SH OPTIONS
+The following format specifiers are supported by _printf:
+
+\fB%c\fP  Print a character.
+.sp
+\fB%s\fP  Print a string.
+.sp
+\fB%d\fP  Print a decimal integer.
+.sp
+\fB%x\fP  Print a hexadecimal integer.
+.sp
+\fB%o\fP  Print an octal integer.
+.sp
+\fB%p\fP  Print a pointer (memory address).
+.sp
+\fB%u\fP  Print an unsigned decimal integer.
+.sp
+\fB%%\fP  Print a percent sign.
+
+.SH EXAMPLES
+Print a character:
+.sp
+\fB_printf("Character: %c\\n", 'A');\fP
+
+Print a string:
+.sp
+\fB_printf("String: %s\\n", "Hello, world!");\fP
+
+Print a decimal integer:
+.sp
+\fB_printf("Decimal: %d\\n", 12345);\fP
+
+Print a hexadecimal integer:
+.sp
+\fB_printf("Hexadecimal: %x\\n", 255);\fP
+
+Print an octal number:
+.sp
+\fB_printf("Octal: %o\\n", 64);\fP
+
+Print a percent sign:
+.sp
+\fB_printf("Percent Sign: %%\\n");\fP
+
+Print a pointer:
+.sp
+\fB_printf("Pointer: %p\\n", (void *)0x7ffe12345678);\fP
+
+Print an unsigned number:
+.sp
+\fB_printf("Unsigned: %u\\n", 4294967295);\fP
+
+.SH BUGS
+No known bugs.
+
+.SH AUTHOR
+Michael Chukwunwe (https://github.com/stuckwithprogression)
+German Daniel (https://github.com/germanchuks)
