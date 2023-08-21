@@ -13,24 +13,24 @@
  */
 
 int print_unsigned_int(va_list args, char output_buffer[],
-                                   int format_flags, int min_width, int precision, int size_spec)
+					   int format_flags, int min_width, int precision, int size_spec)
 {
-        int i = BUFF_SIZE - 2;
-        unsigned long int num = va_arg(args, unsigned long int);
+	int i = BUFF_SIZE - 2;
+	unsigned long int num = va_arg(args, unsigned long int);
 
-        num = size_conv_unsgned(num, size_spec);
-        if (num == 0)
-                output_buffer[i--] = '0';
+	num = size_conv_unsgned(num, size_spec);
+	if (num == 0)
+		output_buffer[i--] = '0';
 
-        output_buffer[BUFF_SIZE - 1] = '\0';
-        while (num > 0)
-        {
-                output_buffer[i--] = (num % 10) + '0';
-                num /= 10;
-        }
-        i++;
-        return (write_unsigned_int(0, i, output_buffer, format_flags,
-                                min_width, precision, size_spec));
+	output_buffer[BUFF_SIZE - 1] = '\0';
+	while (num > 0)
+	{
+		output_buffer[i--] = (num % 10) + '0';
+		num /= 10;
+	}
+	i++;
+	return (write_unsigned_int(0, i, output_buffer, format_flags,
+							   min_width, precision, size_spec));
 }
 
 /**
@@ -46,35 +46,35 @@ int print_unsigned_int(va_list args, char output_buffer[],
  */
 
 int print_octal_number(va_list args, char output_buffer[],
-                                int format_flags, int min_width, int precision, int size_spec)
+					   int format_flags, int min_width, int precision, int size_spec)
 {
 
-        int i = BUFF_SIZE - 2;
-        unsigned long int num = va_arg(args, unsigned long int);
-        unsigned long int originalNum = num;
+	int i = BUFF_SIZE - 2;
+	unsigned long int num = va_arg(args, unsigned long int);
+	unsigned long int originalNum = num;
 
-        UNUSED(min_width);
+	UNUSED(min_width);
 
-        num = size_conv_unsgned(num, size_spec);
+	num = size_conv_unsgned(num, size_spec);
 
-        if (num == 0)
-                output_buffer[i--] = '0';
+	if (num == 0)
+		output_buffer[i--] = '0';
 
-        output_buffer[BUFF_SIZE - 1] = '\0';
+	output_buffer[BUFF_SIZE - 1] = '\0';
 
-        while (num > 0)
-        {
-                output_buffer[i--] = (num % 8) + '0';
-                num /= 8;
-        }
+	while (num > 0)
+	{
+		output_buffer[i--] = (num % 8) + '0';
+		num /= 8;
+	}
 
-        if (format_flags & FLAG_HASH && originalNum != 0)
-                output_buffer[i--] = '0';
+	if (format_flags & FLAG_HASH && originalNum != 0)
+		output_buffer[i--] = '0';
 
-        i++;
+	i++;
 
-        return (write_unsigned_int(0, i, output_buffer, format_flags,
-                                min_width, precision, size_spec));
+	return (write_unsigned_int(0, i, output_buffer, format_flags,
+							   min_width, precision, size_spec));
 }
 
 /**
@@ -90,10 +90,10 @@ int print_octal_number(va_list args, char output_buffer[],
  */
 
 int print_hexadecimal(va_list args, char output_buffer[],
-                                          int format_flags, int min_width, int precision, int size_spec)
+					  int format_flags, int min_width, int precision, int size_spec)
 {
-        return (print_custom_hex(args, "0123456789abcdef", output_buffer,
-                                           format_flags, 'x', min_width, precision, size_spec));
+	return (print_custom_hex(args, "0123456789abcdef", output_buffer,
+							 format_flags, 'x', min_width, precision, size_spec));
 }
 
 /**
@@ -109,10 +109,10 @@ int print_hexadecimal(va_list args, char output_buffer[],
  */
 
 int print_uppercase_hex(va_list args, char output_buffer[],
-                                         int format_flags, int min_width, int precision, int size_spec)
+						int format_flags, int min_width, int precision, int size_spec)
 {
-        return (print_custom_hex(args, "0123456789ABCDEF", output_buffer,
-                                           format_flags, 'X', min_width, precision, size_spec));
+	return (print_custom_hex(args, "0123456789ABCDEF", output_buffer,
+							 format_flags, 'X', min_width, precision, size_spec));
 }
 
 /**
@@ -130,36 +130,37 @@ int print_uppercase_hex(va_list args, char output_buffer[],
  */
 
 int print_custom_hex(va_list args, char map_to[], char output_buffer[],
-                           int format_flags, char flag_ch, int min_width,
-                           int precision, int size_spec)
+					 int format_flags, char flag_ch, int min_width,
+					 int precision, int size_spec)
 {
-        int i = BUFF_SIZE - 2;
-        unsigned long int num = va_arg(args, unsigned long int);
-        unsigned long int originalNum = num;
+	int i = BUFF_SIZE - 2;
+	unsigned long int num = va_arg(args, unsigned long int);
+	unsigned long int originalNum = num;
 
-        UNUSED(min_width);
+	UNUSED(min_width);
 
-        num = size_conv_unsgned(num, size_spec);
+	num = size_conv_unsgned(num, size_spec);
 
-        if (num == 0)
-                output_buffer[i--] = '0';
+	if (num == 0)
+		output_buffer[i--] = '0';
 
-        output_buffer[BUFF_SIZE - 1] = '\0';
+	output_buffer[BUFF_SIZE - 1] = '\0';
 
-        while (num > 0)
-        {
-                output_buffer[i--] = map_to[num % 16];
-                num /= 16;
-        }
+	while (num > 0)
+	{
+		output_buffer[i--] = map_to[num % 16];
+		num /= 16;
+	}
 
-        if (format_flags & FLAG_HASH && originalNum != 0)
-        {
-                output_buffer[i--] = flag_ch;
-                output_buffer[i--] = '0';
-        }
+	if (format_flags & FLAG_HASH && originalNum != 0)
+	{
+		output_buffer[i--] = flag_ch;
+		output_buffer[i--] = '0';
+	}
 
-        i++;
+	i++;
 
-        return (write_unsigned_int(0, i, output_buffer, format_flags,
-                                min_width, precision, size_spec));
+	return (write_unsigned_int(0, i, output_buffer, format_flags,
+							   min_width, precision, size_spec));
 }
+
