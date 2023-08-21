@@ -10,19 +10,19 @@
 
 int get_size_specifier(const char *format, int *index)
 {
-        int currentIndex = *index + 1;
-        int sizeSpecifier = 0;
+	int currentIndex = *index + 1;
+	int sizeSpecifier = 0;
 
-        if (format[currentIndex] == 'l')
-                sizeSpecifier = SIZE_LONG;
-        else if (format[currentIndex] == 'h')
-                sizeSpecifier = SIZE_SHORT;
+	if (format[currentIndex] == 'l')
+		sizeSpecifier = SIZE_LONG;
+	else if (format[currentIndex] == 'h')
+		sizeSpecifier = SIZE_SHORT;
 
-        if (sizeSpecifier == 0)
-                *index = currentIndex - 1;
-        else
-                *index = currentIndex;
+	if (sizeSpecifier == 0)
+		*index = currentIndex - 1;
+	else
+		*index = currentIndex;
 
-        return (sizeSpecifier);
+	return (sizeSpecifier);
 }
 
